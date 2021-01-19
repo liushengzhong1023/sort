@@ -47,7 +47,7 @@ def linear_assignment(cost_matrix):
 
 def iou_batch(bb_test, bb_gt):
     """
-    From SORT: Computes IOU between two bboxes in the form [x1,y1,x2,y2]
+    From SORT: Computes IOU between two bboxes in the form [x1,y1,x2,y2] in a batch
     """
     bb_gt = np.expand_dims(bb_gt, 0)
     bb_test = np.expand_dims(bb_test, 1)
@@ -216,7 +216,8 @@ class Sort(object):
         """
         Params:
           dets - a numpy array of detections in the format [[x1,y1,x2,y2,score],[x1,y1,x2,y2,score],...]
-        Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 5)) for frames without detections).
+        Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 5)) for
+        frames without detections).
         Returns the a similar array, where the last column is the object ID.
 
         NOTE: The number of objects returned may differ from the number of detections provided.
@@ -336,7 +337,7 @@ if __name__ == '__main__':
                     ax1.cla()
 
     print("Total Tracking took: %.3f seconds for %d frames or %.1f FPS" % (
-    total_time, total_frames, total_frames / total_time))
+        total_time, total_frames, total_frames / total_time))
 
     if (display):
         print("Note: to get real runtime results run without the option: --display")
